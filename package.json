@@ -19,6 +19,12 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "@capacitor/android": "^2.0.0",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0",
+    "@capacitor/ios": "^2.0.0",
+    "c": "^0.1.0",
+    "component": "^1.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

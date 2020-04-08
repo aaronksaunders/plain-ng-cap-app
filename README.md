@@ -1,27 +1,71 @@
 # MyAppCap
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## This is a sample application about how to potentially connect a basic angular application to to work with [Ionic Capacitor](https://capacitor.ionicframework.com/)
 
-## Development server
+> Please default to the great documentation from Ionic https://capacitor.ionicframework.com/docs/basics/workflow
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Files I manually Added
 
-## Code scaffolding
+```json
+// ionic.config.json
+{
+    "name": "my-app-cap",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "angular"
+  }
+```  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## SET ANDROID MANIFEST
+```html
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:usesCleartextTraffic="true" // <== NEW
+    android:theme="@style/AppTheme">
+```        
 
-## Build
+## Running the App To Debug On Device
+To run with live reload and debug **replace with your ip**
+> If you see an error it os because in is look for a project in the `dist` directory even though you are not using it. I hacked it buy creating the path and just adding a blank `index.html` file
+```
+ng serve --host=192.168.1.151 --port=4200
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Open another terminal, to copy assets to platform specific directory
+```c
+npx cap add android // for Android
+```
+Open another terminal, to copy assets to platform specific directory
+```c
+npx cap copy  android // for Android
+```
+Open Android Studio and run the app...
+```
+npx cap open
+```
+you should see in something indicating that it is runnin from your local server and NOT off the device
+```
+Loading app at http://192.168.1.151:4200...
+```
+It is loading from the server address in the `capacitor.config.json`
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```json
+  "server" : {
+    "hostname": "app",
+    "iosScheme": "ionic",
+    "androidScheme": "http",
+    "url" : "http://192.168.1.151:4200"
+  }
+```
+I have quickly hacked this together so please feel free to provide feedback and open issues in the repo.
+<p>
+<img src='readme-images/screen-shot-of-device-debugging.png' width='80%'/>
+</p>
+<p>
+<img src='readme-images/chrome-tools-connected-to-device.png' width='80%'/>
+</p>

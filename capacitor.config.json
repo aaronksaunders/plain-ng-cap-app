@@ -1,0 +1,17 @@
+{
+  "appId": "text.com.app",
+  "appName": "my-app-cap",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/my-app-cap",
+  "cordova": {},
+  "ios": {
+    "plugins": {}
+  },
+  "server" : {
+    "hostname": "app",
+    "iosScheme": "ionic",
+    "androidScheme": "http",
+    "url" : "http://192.168.1.151:4200"
+  }
+}
